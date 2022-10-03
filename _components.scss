@@ -1,0 +1,62 @@
+// common
+.color__peg {
+  background-color: $color-brown;
+  border: 1px solid $color-darkbrown;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+// specific
+
+.game__code {
+  background-color: $color-yellow;
+  padding: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.game__decoding__board {
+  background-color: $color-lightbrown;
+  padding: 20px;
+
+  .decoding__board__row {
+    border-bottom: 1px solid $color-darkbrown;
+    align-items: center;
+    justify-items: center;
+    padding: 10px 0px;
+  }
+}
+
+.game__peg__board {
+  background-color: $color-lightbrown;
+  padding: 20px;
+  align-items: center;
+  justify-items: center;
+
+  .code__pegs {
+    color: $color-lightbrown;
+    border: 1px solid $color-brown;
+    width: 40px;
+    height: 40px;
+
+    .peg {
+        border: 1px solid $color-brown;
+        margin: 3px;
+    }
+  }
+
+}
+
+.game__color__choices {
+  background-color: $color-yellow;
+  align-items: center;
+  padding: 20px;
+
+  .choice {
+    background-color: $color-lightbrown;
+    border: 1px solid $color-darkbrown;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
