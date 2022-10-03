@@ -5,6 +5,13 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  text-align: center;
+    p {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
 }
 
 .myblue {
@@ -56,6 +63,15 @@
     align-items: center;
     justify-items: center;
     padding: 10px 0px;
+
+    .color__peg__confirm {
+        background-color: $color-lightbrown;
+        border: 1px solid $color-darkbrown;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: bolder;
+    }
   }
 }
 
@@ -126,11 +142,13 @@
     background-color: #556b2f;
   }
 
-  .choice__confirm {
+  .choice__erase {
     background-color: $color-brown;
     border: 1px solid $color-darkbrown;
     padding: 10px;
     border-radius: 10px;
+    font-size: 24px;
+    font-weight: bolder;
   }
 }
 

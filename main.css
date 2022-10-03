@@ -4,6 +4,7 @@
   margin: 0px;
   font-family: "Raleway", sans-serif;
   box-sizing: border-box;
+  color: #6f4e37;
 }
 
 .color__peg {
@@ -12,6 +13,12 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  text-align: center;
+}
+.color__peg p {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .myblue {
@@ -60,6 +67,14 @@
   align-items: center;
   justify-items: center;
   padding: 10px 0px;
+}
+.game__decoding__board .decoding__board__row .color__peg__confirm {
+  background-color: #d99a6c;
+  border: 1px solid #6f4e37;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .game__peg__board {
@@ -118,11 +133,13 @@
 .game__color__choices .mygreen {
   background-color: #556b2f;
 }
-.game__color__choices .choice__confirm {
+.game__color__choices .choice__erase {
   background-color: #a67b5b;
   border: 1px solid #6f4e37;
   padding: 10px;
   border-radius: 10px;
+  font-size: 24px;
+  font-weight: bolder;
 }
 
 .game__copyright {
@@ -164,7 +181,7 @@
 }
 .game .game__decoding__board .decoding__board__row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
 .game .game__peg__board {
