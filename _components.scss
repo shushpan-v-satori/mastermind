@@ -6,7 +6,37 @@
   height: 40px;
   border-radius: 50%;
 }
+
+.myblue {
+    background-color: #007991;
+  }
+
+  .mylightblue {
+    background-color: #6699cc;
+  }
+
+  .myyellow {
+    background-color: #ffcc33;
+  }
+
+  .mypink {
+    background-color: #d47479;
+  }
+
+  .myred {
+    background-color: #7b1113;
+  }
+
+  .mygreen {
+    background-color: #556b2f;
+  }
 // specific
+
+.game {
+    h1, h2 {
+    color: $color-darkbrown
+}
+}
 
 .game__code {
   background-color: $color-yellow;
@@ -40,11 +70,18 @@
     height: 40px;
 
     .peg {
-        border: 1px solid $color-brown;
-        margin: 3px;
+      border: 1px solid $color-brown;
+      margin: 3px;
     }
-  }
 
+    .mywhite {
+        background-color: $color-white;
+    }
+    .myblack {
+        background-color: $color-black;
+    }
+
+  }
 }
 
 .game__color__choices {
@@ -58,5 +95,29 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+  }
+
+  .myblue {
+    background-color: #007991;
+  }
+
+  .mylightblue {
+    background-color: #6699cc;
+  }
+
+  .myyellow {
+    background-color: #ffcc33;
+  }
+
+  .mypink {
+    background-color: #d47479;
+  }
+
+  .myred {
+    background-color: #7b1113;
+  }
+
+  .mygreen {
+    background-color: #556b2f;
   }
 }

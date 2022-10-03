@@ -14,6 +14,34 @@
   border-radius: 50%;
 }
 
+.myblue {
+  background-color: #007991;
+}
+
+.mylightblue {
+  background-color: #6699cc;
+}
+
+.myyellow {
+  background-color: #ffcc33;
+}
+
+.mypink {
+  background-color: #d47479;
+}
+
+.myred {
+  background-color: #7b1113;
+}
+
+.mygreen {
+  background-color: #556b2f;
+}
+
+.game h1, .game h2 {
+  color: #6f4e37;
+}
+
 .game__code {
   background-color: #ecb176;
   padding: 20px;
@@ -48,6 +76,12 @@
   border: 1px solid #a67b5b;
   margin: 3px;
 }
+.game__peg__board .code__pegs .mywhite {
+  background-color: #fffdf9;
+}
+.game__peg__board .code__pegs .myblack {
+  background-color: #0c1618;
+}
 
 .game__color__choices {
   background-color: #ecb176;
@@ -61,6 +95,24 @@
   height: 40px;
   border-radius: 50%;
 }
+.game__color__choices .myblue {
+  background-color: #007991;
+}
+.game__color__choices .mylightblue {
+  background-color: #6699cc;
+}
+.game__color__choices .myyellow {
+  background-color: #ffcc33;
+}
+.game__color__choices .mypink {
+  background-color: #d47479;
+}
+.game__color__choices .myred {
+  background-color: #7b1113;
+}
+.game__color__choices .mygreen {
+  background-color: #556b2f;
+}
 
 .game {
   display: grid;
@@ -73,10 +125,12 @@
 .game .game__header {
   grid-row: 1/2;
   grid-column: 1/3;
+  text-align: center;
 }
 .game .game__menu {
   grid-row: 2/3;
   grid-column: 1/3;
+  text-align: center;
 }
 .game .game__code {
   grid-row: 3/4;
@@ -113,7 +167,7 @@
   grid-row: 5/6;
   grid-column: 1/3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
 .game .game__copyright {
