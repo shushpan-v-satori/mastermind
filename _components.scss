@@ -43,6 +43,8 @@
   padding: 20px;
   align-items: center;
   justify-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .game__decoding__board {
@@ -62,6 +64,7 @@
   padding: 20px;
   align-items: center;
   justify-items: center;
+  border-top-right-radius: 20px;
 
   .code__pegs {
     color: $color-lightbrown;
@@ -88,6 +91,8 @@
   background-color: $color-yellow;
   align-items: center;
   padding: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
   .choice {
     background-color: $color-lightbrown;
@@ -119,5 +124,12 @@
 
   .mygreen {
     background-color: #556b2f;
+  }
+
+  .choice__confirm {
+    background-color: $color-brown;
+    border: 1px solid $color-darkbrown;
+    padding: 10px;
+    border-radius: 10px;
   }
 }

@@ -47,6 +47,8 @@
   padding: 20px;
   align-items: center;
   justify-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .game__decoding__board {
@@ -65,6 +67,7 @@
   padding: 20px;
   align-items: center;
   justify-items: center;
+  border-top-right-radius: 20px;
 }
 .game__peg__board .code__pegs {
   color: #d99a6c;
@@ -87,6 +90,8 @@
   background-color: #ecb176;
   align-items: center;
   padding: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .game__color__choices .choice {
   background-color: #d99a6c;
@@ -112,6 +117,12 @@
 }
 .game__color__choices .mygreen {
   background-color: #556b2f;
+}
+.game__color__choices .choice__confirm {
+  background-color: #a67b5b;
+  border: 1px solid #6f4e37;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .game {
