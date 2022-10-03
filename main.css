@@ -125,6 +125,11 @@
   border-radius: 10px;
 }
 
+.game__copyright {
+  color: #ded7c7;
+  margin: 20px 0px;
+}
+
 .game {
   display: grid;
   grid-template-columns: 5fr 1fr;
