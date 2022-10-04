@@ -1,5 +1,4 @@
-// common
-.color__peg {
+.guess {
   background-color: $color-brown;
   border: 1px solid $color-darkbrown;
   width: 40px;
@@ -14,30 +13,30 @@
 
 }
 
-.myblue {
-    background-color: #007991;
+.blue {
+    background-color: $color-blue;
   }
 
-  .mylightblue {
-    background-color: #6699cc;
+  .lightblue {
+    background-color: $color-lightblue;
   }
 
-  .myyellow {
-    background-color: #ffcc33;
+  .yellow {
+    background-color: $color-yellow;
   }
 
-  .mypink {
-    background-color: #d47479;
+  .pink {
+    background-color: $color-pink;
   }
 
-  .myred {
-    background-color: #7b1113;
+  .red {
+    background-color: $color-red;
   }
 
-  .mygreen {
-    background-color: #556b2f;
+  .green {
+    background-color: $color-green;
   }
-// specific
+
 
 .game {
     h1, h2 {
@@ -45,8 +44,22 @@
 }
 }
 
+.answer {
+    background-color: $color-brown;
+    border: 1px solid $color-darkbrown;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+      p {
+          padding: 10px;
+          font-size: 18px;
+          font-weight: bold;
+      }
+  }
+
 .game__code {
-  background-color: $color-yellow;
+  background-color: $color-lightestbrown;
   padding: 20px;
   align-items: center;
   justify-items: center;
@@ -64,7 +77,7 @@
     justify-items: center;
     padding: 10px 0px;
 
-    .color__peg__confirm {
+    .guess__confirm {
         background-color: $color-lightbrown;
         border: 1px solid $color-darkbrown;
         padding: 10px;
@@ -93,10 +106,10 @@
       margin: 3px;
     }
 
-    .mywhite {
+    .white {
         background-color: $color-white;
     }
-    .myblack {
+    .black {
         background-color: $color-black;
     }
 
@@ -104,7 +117,7 @@
 }
 
 .game__color__choices {
-  background-color: $color-yellow;
+  background-color: $color-lightestbrown;
   align-items: center;
   padding: 20px;
   border-bottom-left-radius: 20px;
@@ -118,28 +131,56 @@
     border-radius: 50%;
   }
 
-  .myblue {
-    background-color: #007991;
+  .choice--hover:hover {
+    border: 3px solid $color-darkbrown;
   }
 
-  .mylightblue {
-    background-color: #6699cc;
+  .blue {
+    background-color: $color-blue;
   }
 
-  .myyellow {
-    background-color: #ffcc33;
+  .blue:active{
+    background-color: $color-blue-active;
   }
 
-  .mypink {
-    background-color: #d47479;
+  .lightblue {
+    background-color: $color-lightblue;
   }
 
-  .myred {
-    background-color: #7b1113;
+  .lightblue--click:active {
+    background-color: $color-lightblue-active;
   }
 
-  .mygreen {
-    background-color: #556b2f;
+  .yellow {
+    background-color: $color-yellow;
+  }
+
+  .yellow--click:active {
+    background-color: $color-yellow-active;
+  }
+
+  .pink {
+    background-color: $color-pink;
+  }
+
+  .pink--click:active {
+    background-color: $color-pink-active;
+  }
+
+  .red {
+    background-color: $color-red;
+  }
+
+  .red--click:active {
+    background-color: $color-red-active;
+  }
+
+  .green {
+    background-color: $color-green;
+  }
+
+  .green--click:active {
+    background-color: $color-green-active;
   }
 
   .choice__erase {

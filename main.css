@@ -7,7 +7,7 @@
   color: #6f4e37;
 }
 
-.color__peg {
+.guess {
   background-color: #a67b5b;
   border: 1px solid #6f4e37;
   width: 40px;
@@ -15,38 +15,52 @@
   border-radius: 50%;
   text-align: center;
 }
-.color__peg p {
+.guess p {
   padding: 10px;
   font-size: 18px;
   font-weight: bold;
 }
 
-.myblue {
+.blue {
   background-color: #007991;
 }
 
-.mylightblue {
-  background-color: #6699cc;
+.lightblue {
+  background-color: #7ed4e6;
 }
 
-.myyellow {
+.yellow {
   background-color: #ffcc33;
 }
 
-.mypink {
+.pink {
   background-color: #d47479;
 }
 
-.myred {
-  background-color: #7b1113;
+.red {
+  background-color: #691240;
 }
 
-.mygreen {
+.green {
   background-color: #556b2f;
 }
 
 .game h1, .game h2 {
   color: #6f4e37;
+}
+
+.answer {
+  background-color: #a67b5b;
+  border: 1px solid #6f4e37;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+.answer p {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .game__code {
@@ -68,7 +82,7 @@
   justify-items: center;
   padding: 10px 0px;
 }
-.game__decoding__board .decoding__board__row .color__peg__confirm {
+.game__decoding__board .decoding__board__row .guess__confirm {
   background-color: #d99a6c;
   border: 1px solid #6f4e37;
   padding: 10px;
@@ -94,10 +108,10 @@
   border: 1px solid #a67b5b;
   margin: 3px;
 }
-.game__peg__board .code__pegs .mywhite {
+.game__peg__board .code__pegs .white {
   background-color: #fffdf9;
 }
-.game__peg__board .code__pegs .myblack {
+.game__peg__board .code__pegs .black {
   background-color: #0c1618;
 }
 
@@ -115,23 +129,44 @@
   height: 40px;
   border-radius: 50%;
 }
-.game__color__choices .myblue {
+.game__color__choices .choice--hover:hover {
+  border: 3px solid #6f4e37;
+}
+.game__color__choices .blue {
   background-color: #007991;
 }
-.game__color__choices .mylightblue {
-  background-color: #6699cc;
+.game__color__choices .blue:active {
+  background-color: #56b0b5;
 }
-.game__color__choices .myyellow {
+.game__color__choices .lightblue {
+  background-color: #7ed4e6;
+}
+.game__color__choices .lightblue--click:active {
+  background-color: #bde0fe;
+}
+.game__color__choices .yellow {
   background-color: #ffcc33;
 }
-.game__color__choices .mypink {
+.game__color__choices .yellow--click:active {
+  background-color: #ffd65c;
+}
+.game__color__choices .pink {
   background-color: #d47479;
 }
-.game__color__choices .myred {
-  background-color: #7b1113;
+.game__color__choices .pink--click:active {
+  background-color: #f59b92;
 }
-.game__color__choices .mygreen {
+.game__color__choices .red {
+  background-color: #691240;
+}
+.game__color__choices .red--click:active {
+  background-color: #ac0968;
+}
+.game__color__choices .green {
   background-color: #556b2f;
+}
+.game__color__choices .green--click:active {
+  background-color: #718e3e;
 }
 .game__color__choices .choice__erase {
   background-color: #a67b5b;

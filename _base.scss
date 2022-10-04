@@ -2,13 +2,29 @@
 
 $font-logo: "Quicksand", sans-serif;
 $font-main: "Raleway", sans-serif;
-$color-yellow: #ecb176;
+
+//colors for the board background
+$color-lightestbrown: #ecb176;
 $color-lightbrown: #d99a6c;
 $color-brown: #a67b5b;
 $color-darkbrown: #6f4e37;
 $color-white: #fffdf9;
 $color-black: #0c1618;
 $color-grey: #ded7c7;
+
+//color choices
+$color-blue: #007991;
+$color-blue-active: #56b0b5;
+$color-lightblue: #7ed4e6;
+$color-lightblue-active: #bde0fe;
+$color-yellow: #ffcc33;
+$color-yellow-active: #ffd65c;
+$color-pink: #d47479;
+$color-pink-active: #f59b92;
+$color-red: #691240;
+$color-red-active: #ac0968;
+$color-green: #556b2f;
+$color-green-active: #718e3e;
 
 * { 
     padding: 0px;
