@@ -2,13 +2,14 @@
 export let gameCode = [];
 
 export const codemaker = (codemakerChoices) => {
-    
-    let randomIndex;
-    let codemakerChoice;
+    gameCode = [];
+    let randomIndex = 0;
+    let codemakerChoice = "";
+    const codemakerChoicesCopy = [...codemakerChoices];
     for (let i = 0; i < 4; i++) {
-        randomIndex = Math.floor(Math.random()*codemakerChoices.length);
-        codemakerChoice = codemakerChoices[randomIndex];
-        codemakerChoices.splice(randomIndex,1);
+        randomIndex = Math.floor(Math.random()*codemakerChoicesCopy.length);
+        codemakerChoice = codemakerChoicesCopy[randomIndex];
+        codemakerChoicesCopy.splice(randomIndex,1);
         gameCode.push(codemakerChoice);
     };
     console.log(gameCode + "--gamecode");
