@@ -21,6 +21,9 @@ console.log(confirmGuessesDom);
 const eraseGuesses = document.querySelector(".guess__erase"); //erase button of a single quess
 console.log(eraseGuesses);
 
+const groupOfPegs = document.querySelectorAll(".code__pegs");
+console.log(groupOfPegs);
+
 const pegsDom = document.querySelectorAll(".peg")
 console.log(pegsDom);
 
@@ -84,6 +87,27 @@ const enableChoices = (choices) => {
   });
 };
 
+// show code pegs - white or black based on the guess validation
+const showCodePegs = (pegsDom, j, codePegArray) => {
+    let pegId=0;
+    let adjustment=4;
+    codePegArray=codePegArray.sort();
+    for (let x = 0; x < codePegArray.length; x++) {
+        if (adjustment > 1 && adjustment <= 4) {
+            pegId = (j+1) * 4 - adjustment;
+            adjustment--;
+            pegsDom[pegId].classList.add(codePegArray[x]);
+        console.log(pegId + "---i " + x + "----x");
+          } else if (adjustment == 1) {
+            pegId = (j+1) * 4 - adjustment;
+            adjustment = 4;
+            pegsDom[pegId].classList.add(codePegArray[x]);
+        console.log(pegId + "---i " + x + "----x");
+          }
+    }       
+  };
+
+
 //Erase last availble guess
 eraseGuesses.addEventListener("click", (event) => {
   event.preventDefault();
@@ -146,7 +170,8 @@ confirmGuessesDom.forEach((confirmation) => {
     );
     // console.log(isChoiceConfirmed + "-------choice confirmed");
     if (j > 0) {
-      verifyGuess(rowOfGuesses, gameCode); //verify the results
+      const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
+      showCodePegs(pegsDom, j, codePegsArrayValue);
       enableChoices(choices);
       rowOfGuesses = [];
       console.log(rowOfGuesses + "row of guesses when after function");
@@ -157,13 +182,6 @@ confirmGuessesDom.forEach((confirmation) => {
   });
 });
 
-//show code pegs - white or black based on the guess validation
-// const showCodePegs = (codePegArray, j) => {
-//     choices.forEach((choice) => {
-      
-      
-//     });
-//   };
 
 
 //show answers

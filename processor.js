@@ -15,10 +15,10 @@ export const codemaker = (codemakerChoices) => {
     return gameCode;
 };
 
-export const codePegArray =[];
+export let codePegArray =[];
 
 export const verifyGuess = (rowOfGuesses , gameCode) => {
-    
+    codePegArray=[];   
     for (let i = 0; i < gameCode.length ; i++) {
         if (rowOfGuesses[i] == gameCode [i] ) {
             codePegArray.push("black");
