@@ -1,20 +1,28 @@
-import { verifyGuess } from "./processor.js";
-import { codemaker } from "./processor.js";
+import { verifyGuess, codePegArray } from "./processor.js";
+import { codemaker , gameCode } from "./processor.js";
 
-const choices = document.querySelectorAll(".choice");
+const codemakerCodeDom = document.querySelectorAll(".answer");
+console.log(codemakerCodeDom)
+
+const gameCodeDom = document.querySelector(".game__code");
+console.log(gameCodeDom);
+
+const codemakerChoices = ["blue","green", "red", "pink", "lightblue", "yellow"];
+
+const choices = document.querySelectorAll(".choice"); //6 colors available for the user
 console.log(choices);
 
-const guesses = document.querySelectorAll(".guess");
+const guesses = document.querySelectorAll(".guess"); //all rows of guesses
 console.log(guesses);
 
-const rowOfGuessesDom = document.querySelectorAll(".decoding__board__row");
-console.log(rowOfGuessesDom);
-
-const confirmGuessesDom = document.querySelectorAll(".guess__confirm");
+const confirmGuessesDom = document.querySelectorAll(".guess__confirm"); //all confirmation buttons
 console.log(confirmGuessesDom);
 
-const eraseGuesses = document.querySelector(".guess__erase");
+const eraseGuesses = document.querySelector(".guess__erase"); //erase button of a single quess
 console.log(eraseGuesses);
+
+const pegsDom = document.querySelectorAll(".peg")
+console.log(pegsDom);
 
 let colorValue;
 // let isChoiceConfirmed = false;
@@ -22,13 +30,20 @@ let k = 4;
 let j = 12;
 let i;
 let rowOfGuesses = [];
+let gameCodeValue;
+
+
+//run a codemaker on pageload
+gameCodeDom.addEventListener("load", codemaker(codemakerChoices));
+
+// gameCodeValue = ["blue","green", "red", "pink"];
+
 
 // disable selection of choices for a guess (when guess row is full)
 const disableChoices = (choices) => {
   choices.forEach((choice) => {
     choice.disabled = true;
     choice.classList.remove("choice--hover", "blue--click" ,"green--click", "red--click", "pink--click" , "lightblue--click", "yellow--click");
-    console.log(choice.classList);
     eraseGuesses.disabled = true;
     eraseGuesses.classList.remove("guess__erase--hover" , "guess__erase--click");
     console.log("disable choices");
@@ -131,7 +146,7 @@ confirmGuessesDom.forEach((confirmation) => {
     );
     // console.log(isChoiceConfirmed + "-------choice confirmed");
     if (j > 0) {
-      verifyGuess(rowOfGuesses);
+      verifyGuess(rowOfGuesses, gameCode); //verify the results
       enableChoices(choices);
       rowOfGuesses = [];
       console.log(rowOfGuesses + "row of guesses when after function");
@@ -141,5 +156,17 @@ confirmGuessesDom.forEach((confirmation) => {
     }
   });
 });
+
+//show code pegs - white or black based on the guess validation
+// const showCodePegs = (codePegArray, j) => {
+//     choices.forEach((choice) => {
+      
+      
+//     });
+//   };
+
+
+//show answers
+
 
 //game reset
