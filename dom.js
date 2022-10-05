@@ -1,4 +1,5 @@
 import { verifyGuess } from "./processor.js";
+import { codemaker } from "./processor.js";
 
 const choices = document.querySelectorAll(".choice");
 console.log(choices);
@@ -22,7 +23,7 @@ let j = 12;
 let i;
 let rowOfGuesses = [];
 
-// disable choices
+// disable selection of choices for a guess (when guess row is full)
 const disableChoices = (choices) => {
   choices.forEach((choice) => {
     choice.disabled = true;
@@ -34,7 +35,7 @@ const disableChoices = (choices) => {
   });
 };
 
-//enable choices
+//enable selection of choices for a guess (when guess row is empty)
 const enableChoices = (choices) => {
   choices.forEach((choice) => {
     choice.disabled = false;
@@ -67,8 +68,6 @@ const enableChoices = (choices) => {
     console.log("enable choices");
   });
 };
-
-//Click to confirm the guess
 
 //Erase last availble guess
 eraseGuesses.addEventListener("click", (event) => {
@@ -115,6 +114,8 @@ choices.forEach((choice) => { //on choice click the color is recognized, populat
     }
   });
 });
+
+//Click to confirm the guess
 
 confirmGuessesDom.forEach((confirmation) => {
   //confirms a guess
