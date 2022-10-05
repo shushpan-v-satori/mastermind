@@ -77,10 +77,28 @@
     justify-items: center;
     padding: 10px 0px;
 
-    .guess__confirm {
-        background-color: $color-lightbrown;
+    .guess__confirm--enabled {
+        background-color: $color-lightestbrown;
         border: 1px solid $color-darkbrown;
-        padding: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+
+    .guess__confirm--hover:hover {
+        background-color: $color-brown;
+    }
+    
+    .guess__confirm--click:active  {
+        background-color: $color-lightestbrown;
+    }
+
+    .guess__confirm--disabled {
+        background-color: $color-lightbrown;
+        color: $color-brown;
+        border: 1px solid $color-darkbrown;
+        padding: 5px;
         border-radius: 10px;
         font-size: 14px;
         font-weight: bolder;
@@ -139,7 +157,7 @@
     background-color: $color-blue;
   }
 
-  .blue:active{
+  .blue--click:active{
     background-color: $color-blue-active;
   }
 
@@ -183,13 +201,21 @@
     background-color: $color-green-active;
   }
 
-  .choice__erase {
+  .guess__erase {
     background-color: $color-brown;
     border: 1px solid $color-darkbrown;
     padding: 10px;
     border-radius: 10px;
     font-size: 24px;
     font-weight: bolder;
+  }
+
+  .guess__erase--hover:hover {
+    background-color: $color-lightbrown;
+  }
+  
+  .guess__erase--click:active {
+    background-color: $color-lightestbrown;
   }
 }
 
