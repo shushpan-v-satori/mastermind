@@ -23,7 +23,14 @@
   background-color: #ecb176;
 }
 
-.game h1, .game h2 {
+@media screen and (max-width: 400px) {
+  .code__reset {
+    padding: 5px;
+    font-size: 14px;
+  }
+}
+.game h1,
+.game h2 {
   color: #6f4e37;
 }
 
@@ -48,6 +55,16 @@
   font-size: 18px;
   font-weight: bold;
 }
+@media screen and (max-width: 400px) {
+  .game__code .answer {
+    width: 30px;
+    height: 30px;
+  }
+  .game__code .answer p {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
 .game__code .blue {
   background-color: #007991;
 }
@@ -67,6 +84,11 @@
   background-color: #556b2f;
 }
 
+@media screen and (max-width: 400px) {
+  .game__code {
+    padding: 5px;
+  }
+}
 .game__decoding__board {
   background-color: #d99a6c;
   padding: 20px;
@@ -84,11 +106,6 @@
   height: 40px;
   border-radius: 50%;
   text-align: center;
-}
-.game__decoding__board .decoding__board__row .guess p {
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
 }
 .game__decoding__board .decoding__board__row .blue {
   background-color: #007991;
@@ -132,6 +149,18 @@
   font-weight: bolder;
 }
 
+@media screen and (max-width: 400px) {
+  .game__decoding__board {
+    padding: 10px;
+  }
+  .game__decoding__board .decoding__board__row {
+    padding: 5px 0px;
+  }
+  .game__decoding__board .decoding__board__row .guess {
+    width: 30px;
+    height: 30px;
+  }
+}
 .game__peg__board {
   background-color: #d99a6c;
   padding: 20px;
@@ -155,6 +184,15 @@
   background-color: #0c1618;
 }
 
+@media screen and (max-width: 400px) {
+  .game__peg__board {
+    padding: 10px;
+  }
+  .game__peg__board .code__pegs {
+    width: 30px;
+    height: 30px;
+  }
+}
 .game__color__choices {
   background-color: #ecb176;
   align-items: center;
@@ -223,6 +261,19 @@
   background-color: #ecb176;
 }
 
+@media screen and (max-width: 400px) {
+  .game__color__choices {
+    padding: 10px;
+  }
+  .game__color__choices .choice {
+    width: 30px;
+    height: 30px;
+  }
+  .game__color__choices .guess__erase {
+    padding: 5px;
+    font-size: 14px;
+  }
+}
 .game__end .game__end__message {
   background-color: #007991;
   border: 5px solid #ecb176;
@@ -261,9 +312,24 @@
   color: #d47479;
 }
 
+@media screen and (max-width: 400px) {
+  .game__end__message {
+    border: 3px solid #ecb176;
+    padding: 20px 10px;
+  }
+  .game__end__message h1 {
+    padding: 10px 0px;
+  }
+  .game__end__message p {
+    padding: 0px 0px 10px 0px;
+  }
+}
 .game__copyright {
-  color: #ded7c7;
   margin: 20px 0px;
+}
+.game__copyright .copyright__description {
+  color: #ded7c7;
+  font-size: 14px;
 }
 
 .game {
@@ -325,4 +391,25 @@
 .game .game__copyright {
   grid-row: 6/7;
   grid-column: 1/3;
+}
+
+@media screen and (max-width: 400px) {
+  .game {
+    margin: auto;
+  }
+  .game .game__code {
+    gap: 5px;
+  }
+  .game .game__decoding__board {
+    gap: 5px;
+  }
+  .game .game__decoding__board .decoding__board__row {
+    gap: 5px;
+  }
+  .game .game__peg__board {
+    gap: 10px;
+  }
+  .game .game__color__choices {
+    gap: 5px;
+  }
 }/*# sourceMappingURL=main.css.map */

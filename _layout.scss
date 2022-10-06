@@ -38,7 +38,6 @@
         
             }
     }
-    
     .game__peg__board {
             grid-row: 4/5;
             grid-column: 2/3;
@@ -67,6 +66,29 @@
     }
 }
 
+@media screen and (max-width: 400px) {
+    .game {
+        margin: auto;
+        .game__code{
+            gap: 5px;
+        }
+
+        .game__decoding__board {
+            gap: 5px;
+            .decoding__board__row {
+                gap: 5px
+            }
+        }
+
+        .game__peg__board {
+            gap: 10px;
+        }
+
+        .game__color__choices {
+            gap: 5px;
+        }
+    }
+}
 
 
 
