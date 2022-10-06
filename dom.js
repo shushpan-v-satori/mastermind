@@ -163,7 +163,7 @@ confirmGuessesDom.forEach((confirmation) => {
       "guess__confirm--hover",
       "guess__confirm--click"
     );
-    if (rowID > 0) {
+    if (rowID > 0) { //all rows but last
       const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
       showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
       allPegsAreBlack(codePegsArrayValue); //check if won
@@ -187,8 +187,47 @@ confirmGuessesDom.forEach((confirmation) => {
       }
       enableChoices(choices);
       rowOfGuesses = [];
-      console.log(rowOfGuesses + "row of guesses when after function");
-    } else { //lost
+    } 
+    else if (rowID==0) { //last row
+        const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
+        showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
+        allPegsAreBlack(codePegsArrayValue); //check if won
+        if (isAWinner == true) {
+        // won
+        showAnswers(rowOfGuesses);
+        displayWinningMessage();
+        //click on start a new game
+        const startGameButton = document.querySelector(".new__game");
+        startGameButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          codeReset();
+        });
+        //click on OK
+        const okButton = document.querySelector(".game__end__dismiss");
+        okButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          hideWinningMessage();
+        });
+    }
+        else {
+            showAnswers(rowOfGuesses);
+            displayLosingMessage();
+          //click on start a new game
+          const startGameButton = document.querySelector(".new__game");
+          startGameButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            codeReset();
+          });
+          //click on OK
+          const okButton = document.querySelector(".game__end__dismiss");
+          okButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            hideLosingMessage();
+          });
+          disableChoices(choices);
+        }
+    }
+    else { //lost
         showAnswers(rowOfGuesses);
         displayLosingMessage();
       //click on start a new game
