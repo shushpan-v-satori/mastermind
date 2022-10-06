@@ -7,42 +7,20 @@
   color: #6f4e37;
 }
 
-.guess {
+.code__reset {
   background-color: #a67b5b;
   border: 1px solid #6f4e37;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  text-align: center;
-}
-.guess p {
   padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-size: 14px;
 }
 
-.blue {
-  background-color: #007991;
+.code__reset--hover:hover {
+  background-color: #d99a6c;
 }
 
-.lightblue {
-  background-color: #7ed4e6;
-}
-
-.yellow {
-  background-color: #ffcc33;
-}
-
-.pink {
-  background-color: #d47479;
-}
-
-.red {
-  background-color: #691240;
-}
-
-.green {
-  background-color: #556b2f;
+.code__reset--click:active {
+  background-color: #ecb176;
 }
 
 .game h1, .game h2 {
@@ -70,18 +48,23 @@
   font-size: 18px;
   font-weight: bold;
 }
-.game__code .code__reset {
-  background-color: #a67b5b;
-  border: 1px solid #6f4e37;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
+.game__code .blue {
+  background-color: #007991;
 }
-.game__code .code__reset--hover:hover {
-  background-color: #d99a6c;
+.game__code .lightblue {
+  background-color: #7ed4e6;
 }
-.game__code .code__reset--click:active {
-  background-color: #ecb176;
+.game__code .yellow {
+  background-color: #ffcc33;
+}
+.game__code .pink {
+  background-color: #d47479;
+}
+.game__code .red {
+  background-color: #691240;
+}
+.game__code .green {
+  background-color: #556b2f;
 }
 
 .game__decoding__board {
@@ -93,6 +76,37 @@
   align-items: center;
   justify-items: center;
   padding: 10px 0px;
+}
+.game__decoding__board .decoding__board__row .guess {
+  background-color: #a67b5b;
+  border: 1px solid #6f4e37;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+.game__decoding__board .decoding__board__row .guess p {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.game__decoding__board .decoding__board__row .blue {
+  background-color: #007991;
+}
+.game__decoding__board .decoding__board__row .lightblue {
+  background-color: #7ed4e6;
+}
+.game__decoding__board .decoding__board__row .yellow {
+  background-color: #ffcc33;
+}
+.game__decoding__board .decoding__board__row .pink {
+  background-color: #d47479;
+}
+.game__decoding__board .decoding__board__row .red {
+  background-color: #691240;
+}
+.game__decoding__board .decoding__board__row .green {
+  background-color: #556b2f;
 }
 .game__decoding__board .decoding__board__row .guess__confirm--enabled {
   background-color: #ecb176;
@@ -207,6 +221,44 @@
 }
 .game__color__choices .guess__erase--click:active {
   background-color: #ecb176;
+}
+
+.win .winning__message {
+  background-color: #007991;
+  border: 5px solid #ecb176;
+  position: fixed;
+  top: 40%;
+  height: auto;
+  z-index: 2000;
+  opacity: 1;
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+.win .winning__message h1 {
+  color: #691240;
+  padding: 20px 0px;
+}
+.win .winning__message p {
+  font-size: 1.5em;
+  color: #7ed4e6;
+  padding: 0px 0px 20px 0px;
+}
+.win .winning__message .winning__button {
+  color: #d47479;
+  background-color: #ffcc33;
+  border: 1px solid #6f4e37;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.5em;
+}
+.win .winning__message .winning__button--hover:hover {
+  background-color: #d47479;
+  color: #ffcc33;
+}
+.win .winning__message .winning__button--click:active {
+  background-color: #556b2f;
+  color: #d47479;
 }
 
 .game__copyright {

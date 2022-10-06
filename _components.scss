@@ -1,41 +1,18 @@
-.guess {
-  background-color: $color-brown;
-  border: 1px solid $color-darkbrown;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  text-align: center;
-    p {
-        padding: 10px;
-        font-size: 18px;
-        font-weight: bold;
+.code__reset {
+    background-color: $color-brown;
+    border: 1px solid $color-darkbrown;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+} 
+    .code__reset--hover:hover {
+        background-color: $color-lightbrown;
     }
 
-}
+    .code__reset--click:active{
+        background-color: $color-lightestbrown;
+    }
 
-.blue {
-    background-color: $color-blue;
-  }
-
-  .lightblue {
-    background-color: $color-lightblue;
-  }
-
-  .yellow {
-    background-color: $color-yellow;
-  }
-
-  .pink {
-    background-color: $color-pink;
-  }
-
-  .red {
-    background-color: $color-red;
-  }
-
-  .green {
-    background-color: $color-green;
-  }
 
 
 .game {
@@ -68,21 +45,29 @@
       }
   }
 
-  .code__reset {
-    background-color: $color-brown;
-    border: 1px solid $color-darkbrown;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-} 
+  .blue {
+    background-color: $color-blue;
+  }
 
-    .code__reset--hover:hover {
-        background-color: $color-lightbrown;
-    }
+  .lightblue {
+    background-color: $color-lightblue;
+  }
 
-    .code__reset--click:active{
-        background-color: $color-lightestbrown;
-    }
+  .yellow {
+    background-color: $color-yellow;
+  }
+
+  .pink {
+    background-color: $color-pink;
+  }
+
+  .red {
+    background-color: $color-red;
+  }
+
+  .green {
+    background-color: $color-green;
+  }
 }
 
 
@@ -96,6 +81,46 @@
     align-items: center;
     justify-items: center;
     padding: 10px 0px;
+
+    .guess {
+        background-color: $color-brown;
+        border: 1px solid $color-darkbrown;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+          p {
+              padding: 10px;
+              font-size: 18px;
+              font-weight: bold;
+          }
+      
+      }
+
+      .blue {
+        background-color: $color-blue;
+      }
+    
+      .lightblue {
+        background-color: $color-lightblue;
+      }
+    
+      .yellow {
+        background-color: $color-yellow;
+      }
+    
+      .pink {
+        background-color: $color-pink;
+      }
+    
+      .red {
+        background-color: $color-red;
+      }
+    
+      .green {
+        background-color: $color-green;
+      }
+    
 
     .guess__confirm--enabled {
         background-color: $color-lightestbrown;
@@ -237,6 +262,52 @@
     background-color: $color-lightestbrown;
   }
 }
+
+.win {
+    .winning__message {
+        background-color: $color-blue;
+        border: 5px solid $color-lightestbrown;
+        position: fixed;
+        top: 40%;
+        height: auto;
+        z-index: 2000;
+        opacity: 1;
+        border-radius: 20px;
+        padding: 40px 20px;
+        text-align: center;
+        h1 {
+            color: $color-red;
+            padding: 20px 0px;
+        }
+    
+        p {
+            font-size: 1.5em;
+            color: $color-lightblue;
+            padding: 0px 0px 20px 0px;
+        }
+    
+        .winning__button {
+            color: $color-pink;
+            background-color: $color-yellow;
+            border: 1px solid $color-darkbrown;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.5em;
+        } 
+
+        .winning__button--hover:hover {
+            background-color: $color-pink;
+            color: $color-yellow;
+        }
+
+        .winning__button--click:active {
+            background-color: $color-green;
+            color: $color-pink;
+          }
+    }
+}
+
+
 
 .game__copyright {
     color: $color-grey;

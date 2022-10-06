@@ -5,6 +5,9 @@ import { codemaker, gameCode } from "./processor.js";
 const codemakerCodeDom = document.querySelectorAll(".answer");
 console.log(codemakerCodeDom);
 
+const codemakerQuestionmark = document.querySelectorAll(".answer__p");
+console.log(codemakerQuestionmark);
+
 const gameCodeDom = document.querySelector(".game__code");
 console.log(gameCodeDom);
 
@@ -23,11 +26,9 @@ console.log(confirmGuessesDom);
 const eraseGuesses = document.querySelector(".guess__erase"); //erase button of a single quess
 console.log(eraseGuesses);
 
-const groupOfPegs = document.querySelectorAll(".code__pegs");
-console.log(groupOfPegs);
-
 const pegsDom = document.querySelectorAll(".peg");
-console.log(pegsDom);
+
+const winningMessageDom = document.querySelector(".win");
 
 const codemakerChoices = [
   "blue",
@@ -42,9 +43,10 @@ const codemakerChoices = [
 
 let colorValue;
 let k = 4;
-let rowId = 12;
-let guessId = 0;
+let rowID = 12;
+let guessId;
 let rowOfGuesses = [];
+let isAWinner = false;
 
 //run a codemaker on pageload
 gameCodeDom.addEventListener("load", codemaker(codemakerChoices));
@@ -115,32 +117,30 @@ choices.forEach((choice) => {
   choice.addEventListener("click", (event) => {
     event.preventDefault();
     colorValue = choice.value;
-    if (rowId > 0) {
+    if (rowID > 0) {
       if (k > 1 && k <= 4) {
-        guessId = rowId * 4 - k;
+        guessId = rowID * 4 - k;
         k--;
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        console.log(rowOfGuesses + "----guesses less than 4");
       } else if (k == 1) {
-        guessId = rowId * 4 - k;
+        guessId = rowID * 4 - k;
         k = 4;
-        rowId--;
-        console.log(rowId);
-        confirmGuessesDom[rowId].disabled = false;
-        confirmGuessesDom[rowId].classList.add(
+        rowID--;
+        confirmGuessesDom[rowID].disabled = false;
+        confirmGuessesDom[rowID].classList.add(
           "guess__confirm--enabled",
           "guess__confirm--hover",
           "guess__confirm--click"
         );
-        confirmGuessesDom[rowId].classList.remove("guess__confirm--disabled");
-        console.log(confirmGuessesDom[rowId].classList);
+        confirmGuessesDom[rowID].classList.remove("guess__confirm--disabled");
+        console.log(confirmGuessesDom[rowID].classList);
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
         console.log(rowOfGuesses + "----guesses when 4");
         disableChoices(choices);
-        console.log(rowId + "--" + k + "---j and k before exiting");
-        return rowId, k;
+        console.log(rowID + "--" + k + "---j and k before exiting");
+        return rowID, k;
       } else {
         console.log("error");
         return;
@@ -162,15 +162,27 @@ confirmGuessesDom.forEach((confirmation) => {
       "guess__confirm--hover",
       "guess__confirm--click"
     );
-    if (rowId > 0) {
+    if (rowID > 0) {
       const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
-      showCodePegs(pegsDom, rowId, codePegsArrayValue); // display black and white pegs
-      // You have won
-      //   if (){
-      //     youHaveWon();
-      //     resetButton();
-      //     return;
-      //   }
+      showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
+      allPegsAreBlack(codePegsArrayValue);
+      if (isAWinner == true) {
+        showAnswers(rowOfGuesses);
+        displayWinningMessage();
+        //click on start a new game
+        const startGameButton = document.querySelector(".new__game");
+        startGameButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          codeReset();
+        });
+        //click on OK
+        const okButton = document.querySelector(".winning__dismiss");
+        okButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          hideWinningMessage();
+        });
+        return;
+      }
       enableChoices(choices);
       rowOfGuesses = [];
       console.log(rowOfGuesses + "row of guesses when after function");
@@ -198,11 +210,50 @@ const showCodePegs = (pegsDom, rowId, codePegArray) => {
   }
 };
 
-// you have won
+// check that all code pegs are black
+const allPegsAreBlack = (codePegArray) => {
+  if (codePegArray.length < 4) {
+    isAWinner = false;
+  } else {
+    isAWinner = codePegArray.every((peg) => {
+      if (peg == "black") {
+        return true;
+      }
+    });
+  }
+  return isAWinner;
+};
+
+//winning message on display
+const displayWinningMessage = () => {
+  winningMessageDom.innerHTML = `
+        <div class="winning__message">
+            <h1>You have cracked the code!</h1>
+            <p>Congratulations!!!</p>
+            <button class="winning__button winning__dismiss winning__button--hover winning__button--click">Ok</button>
+            <button class="winning__button new__game winning__button--hover winning__button--click">Start new game</button>
+        </div>
+    `;
+  resetButton.disabled = true;
+  resetButton.classList.remove("code__reset--hover", "code__reset--click");
+};
+
+// remove winning message
+const hideWinningMessage = () => {
+  winningMessageDom.innerHTML = "";
+  resetButton.disabled = false;
+  resetButton.classList.add("code__reset--hover", "code__reset--click");
+};
 
 //show answers
+const showAnswers = (rowOfGuesses) => {
+  for (let i = 0; i < codemakerCodeDom.length; i++) {
+    codemakerCodeDom[i].classList.add(rowOfGuesses[i]);
+    codemakerQuestionmark[i].innerHTML = "";
+  }
+};
 
-//clicking reset button
+//clicking reset button (top of the screen)
 resetButton.addEventListener("click", (event) => {
   event.preventDefault();
   codeReset();
@@ -212,7 +263,7 @@ resetButton.addEventListener("click", (event) => {
 const codeReset = () => {
   colorValue = "";
   k = 4;
-  rowId = 12;
+  rowID = 12;
   guessId = 0;
   rowOfGuesses = [];
   guesses.forEach((guess) => {
@@ -237,6 +288,20 @@ const codeReset = () => {
       "guess__confirm--click"
     );
   });
+  codemakerCodeDom.forEach((answer) => {
+    answer.classList.remove(
+      "blue",
+      "green",
+      "red",
+      "pink",
+      "lightblue",
+      "yellow"
+    );
+  });
+  codemakerQuestionmark.forEach((answer) => {
+    answer.innerHTML = "?";
+  });
+  hideWinningMessage();
   codemaker(codemakerChoices);
   enableChoices(choices);
 };
