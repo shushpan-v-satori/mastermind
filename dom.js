@@ -28,7 +28,7 @@ console.log(eraseGuesses);
 
 const pegsDom = document.querySelectorAll(".peg");
 
-const winningMessageDom = document.querySelector(".win");
+const gameEndMessageDom = document.querySelector(".game__end");
 
 const codemakerChoices = [
   "blue",
@@ -176,7 +176,7 @@ confirmGuessesDom.forEach((confirmation) => {
           codeReset();
         });
         //click on OK
-        const okButton = document.querySelector(".winning__dismiss");
+        const okButton = document.querySelector(".game__end__dismiss");
         okButton.addEventListener("click", (event) => {
           event.preventDefault();
           hideWinningMessage();
@@ -226,12 +226,12 @@ const allPegsAreBlack = (codePegArray) => {
 
 //winning message on display
 const displayWinningMessage = () => {
-  winningMessageDom.innerHTML = `
-        <div class="winning__message">
+  gameEndMessageDom.innerHTML = `
+        <div class="game__end__message">
             <h1>You have cracked the code!</h1>
             <p>Congratulations!!!</p>
-            <button class="winning__button winning__dismiss winning__button--hover winning__button--click">Ok</button>
-            <button class="winning__button new__game winning__button--hover winning__button--click">Start new game</button>
+            <button class="game__end__button game__end__dismiss game__end__button--hover game__end__button--click">Ok</button>
+            <button class="game__end__button new__game game__end__button--hover game__end__button--click">Start new game</button>
         </div>
     `;
   resetButton.disabled = true;
@@ -240,11 +240,32 @@ const displayWinningMessage = () => {
 
 // remove winning message
 const hideWinningMessage = () => {
-  winningMessageDom.innerHTML = "";
+  gameEndMessageDom.innerHTML = "";
   resetButton.disabled = false;
   resetButton.classList.add("code__reset--hover", "code__reset--click");
 };
 
+//losing message on display
+const displayLosingMessage = () => {
+    gameEndMessageDom.innerHTML = `
+          <div class="game__end__message">
+              <h1>Better luck next time!</h1>
+              <p>You can do it</p>
+              <button class="game__end__button end__game__dismiss game__end__button--hover game__end__button--click">Ok</button>
+              <button class="game__end__button new__game game__end__button--hover game__end__button--click">Start new game</button>
+          </div>
+      `;
+    resetButton.disabled = true;
+    resetButton.classList.remove("code__reset--hover", "code__reset--click");
+  };
+  
+  // remove winning message
+  const hideLosingMessage = () => {
+    gameEndMessageDom.innerHTML = "";
+    resetButton.disabled = false;
+    resetButton.classList.add("code__reset--hover", "code__reset--click");
+  };
+  
 //show answers
 const showAnswers = (rowOfGuesses) => {
   for (let i = 0; i < codemakerCodeDom.length; i++) {

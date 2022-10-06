@@ -263,8 +263,8 @@
   }
 }
 
-.win {
-    .winning__message {
+.game__end {
+    .game__end__message {
         background-color: $color-blue;
         border: 5px solid $color-lightestbrown;
         position: fixed;
@@ -286,7 +286,7 @@
             padding: 0px 0px 20px 0px;
         }
     
-        .winning__button {
+        .game__end__button {
             color: $color-pink;
             background-color: $color-yellow;
             border: 1px solid $color-darkbrown;
@@ -295,12 +295,12 @@
             font-size: 1.5em;
         } 
 
-        .winning__button--hover:hover {
+        .game__end__button--hover:hover {
             background-color: $color-pink;
             color: $color-yellow;
         }
 
-        .winning__button--click:active {
+        .game__end__button--click:active {
             background-color: $color-green;
             color: $color-pink;
           }

@@ -223,7 +223,7 @@
   background-color: #ecb176;
 }
 
-.win .winning__message {
+.game__end .game__end__message {
   background-color: #007991;
   border: 5px solid #ecb176;
   position: fixed;
@@ -235,16 +235,16 @@
   padding: 40px 20px;
   text-align: center;
 }
-.win .winning__message h1 {
+.game__end .game__end__message h1 {
   color: #691240;
   padding: 20px 0px;
 }
-.win .winning__message p {
+.game__end .game__end__message p {
   font-size: 1.5em;
   color: #7ed4e6;
   padding: 0px 0px 20px 0px;
 }
-.win .winning__message .winning__button {
+.game__end .game__end__message .game__end__button {
   color: #d47479;
   background-color: #ffcc33;
   border: 1px solid #6f4e37;
@@ -252,11 +252,11 @@
   border-radius: 10px;
   font-size: 1.5em;
 }
-.win .winning__message .winning__button--hover:hover {
+.game__end .game__end__message .game__end__button--hover:hover {
   background-color: #d47479;
   color: #ffcc33;
 }
-.win .winning__message .winning__button--click:active {
+.game__end .game__end__message .game__end__button--click:active {
   background-color: #556b2f;
   color: #d47479;
 }
