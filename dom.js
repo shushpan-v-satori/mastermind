@@ -118,6 +118,7 @@ choices.forEach((choice) => {
     event.preventDefault();
     colorValue = choice.value;
     if (rowID > 0) {
+      //populates guesses till the last row
       if (k > 1 && k <= 4) {
         guessId = rowID * 4 - k;
         k--;
@@ -126,7 +127,7 @@ choices.forEach((choice) => {
       } else if (k == 1) {
         guessId = rowID * 4 - k;
         k = 4;
-        rowID--;
+        rowID--; //becomes 0 for the first row, means that all rows are popualted with guesses
         confirmGuessesDom[rowID].disabled = false;
         confirmGuessesDom[rowID].classList.add(
           "guess__confirm--enabled",
@@ -165,8 +166,9 @@ confirmGuessesDom.forEach((confirmation) => {
     if (rowID > 0) {
       const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
       showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
-      allPegsAreBlack(codePegsArrayValue);
+      allPegsAreBlack(codePegsArrayValue); //check if won
       if (isAWinner == true) {
+        // won
         showAnswers(rowOfGuesses);
         displayWinningMessage();
         //click on start a new game
@@ -186,7 +188,21 @@ confirmGuessesDom.forEach((confirmation) => {
       enableChoices(choices);
       rowOfGuesses = [];
       console.log(rowOfGuesses + "row of guesses when after function");
-    } else {
+    } else { //lost
+        showAnswers(rowOfGuesses);
+        displayLosingMessage();
+      //click on start a new game
+      const startGameButton = document.querySelector(".new__game");
+      startGameButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        codeReset();
+      });
+      //click on OK
+      const okButton = document.querySelector(".game__end__dismiss");
+      okButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        hideLosingMessage();
+      });
       disableChoices(choices);
     }
   });
@@ -247,25 +263,25 @@ const hideWinningMessage = () => {
 
 //losing message on display
 const displayLosingMessage = () => {
-    gameEndMessageDom.innerHTML = `
+  gameEndMessageDom.innerHTML = `
           <div class="game__end__message">
               <h1>Better luck next time!</h1>
               <p>You can do it</p>
-              <button class="game__end__button end__game__dismiss game__end__button--hover game__end__button--click">Ok</button>
+              <button class="game__end__button game__end__dismiss game__end__button--hover game__end__button--click">Ok</button>
               <button class="game__end__button new__game game__end__button--hover game__end__button--click">Start new game</button>
           </div>
       `;
-    resetButton.disabled = true;
-    resetButton.classList.remove("code__reset--hover", "code__reset--click");
-  };
-  
-  // remove winning message
-  const hideLosingMessage = () => {
-    gameEndMessageDom.innerHTML = "";
-    resetButton.disabled = false;
-    resetButton.classList.add("code__reset--hover", "code__reset--click");
-  };
-  
+  resetButton.disabled = true;
+  resetButton.classList.remove("code__reset--hover", "code__reset--click");
+};
+
+// remove winning message
+const hideLosingMessage = () => {
+  gameEndMessageDom.innerHTML = "";
+  resetButton.disabled = false;
+  resetButton.classList.add("code__reset--hover", "code__reset--click");
+};
+
 //show answers
 const showAnswers = (rowOfGuesses) => {
   for (let i = 0; i < codemakerCodeDom.length; i++) {
