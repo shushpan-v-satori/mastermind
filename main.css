@@ -12,7 +12,7 @@
   border: 1px solid #6f4e37;
   padding: 10px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .code__reset--hover:hover {
@@ -34,6 +34,14 @@
   color: #6f4e37;
 }
 
+@media screen and (max-width: 400px) {
+  .game {
+    height: 100vw;
+  }
+  .game h1 {
+    font-size: 20px;
+  }
+}
 .game__code {
   background-color: #ecb176;
   padding: 20px;
@@ -57,8 +65,8 @@
 }
 @media screen and (max-width: 400px) {
   .game__code .answer {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
   .game__code .answer p {
     padding: 5px;
@@ -157,8 +165,14 @@
     padding: 5px 0px;
   }
   .game__decoding__board .decoding__board__row .guess {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
+  }
+  .game__decoding__board .decoding__board__row .guess__confirm--enabled {
+    font-size: 10px;
+  }
+  .game__decoding__board .decoding__board__row .guess__confirm--disabled {
+    font-size: 10px;
   }
 }
 .game__peg__board {
@@ -189,8 +203,8 @@
     padding: 10px;
   }
   .game__peg__board .code__pegs {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
 }
 .game__color__choices {
@@ -266,8 +280,8 @@
     padding: 10px;
   }
   .game__color__choices .choice {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
   .game__color__choices .guess__erase {
     padding: 5px;
