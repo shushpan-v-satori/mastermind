@@ -13,7 +13,7 @@
   background-color: $color-lightestbrown;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .code__reset {
     padding: 5px;
     font-size: 14px;
@@ -27,7 +27,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .game {
         height: 100vw;
       h1 {
@@ -59,7 +59,7 @@
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     .answer {
       width: 24px;
       height: 24px;
@@ -95,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .game__code {
     padding: 5px;
   }
@@ -173,7 +173,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .game__decoding__board {
     padding: 10px;
 
@@ -222,7 +222,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .game__peg__board {
     padding: 10px;
 
@@ -318,7 +318,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .game__color__choices {
     padding: 10px;
 
@@ -378,7 +378,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .game__end__message {
     border: 3px solid $color-lightestbrown;
     padding: 20px 10px;
