@@ -47,6 +47,7 @@ let rowID = 12;
 let guessId;
 let rowOfGuesses = [];
 let isAWinner = false;
+let lastRowOfGuesses = [];
 
 //run a codemaker on pageload
 gameCodeDom.addEventListener("load", codemaker(codemakerChoices));
@@ -105,11 +106,23 @@ const enableChoices = (choices) => {
 };
 
 //Erase last availble guess
-eraseGuesses.addEventListener("click", (event) => {
-  event.preventDefault();
-  guesses[44].classList.remove("pink");
-  console.log(guesses[44].classList);
-});
+
+// eraseGuesses.addEventListener("click", (event) =>{
+//     event.preventDefault(); 
+// });
+
+// eraseGuesses.addEventListener("click", (event) => {
+//   event.preventDefault();
+//     let x = lastRowOfGuesses;
+//     erasableRowID = Math.round(x/4);
+//     k = 
+//     lastRowOfGuesses[eraseableId].classList.remove("blue",
+//     "green",
+//     "red",
+//     "pink",
+//     "lightblue",
+//     "yellow");
+// });
 
 // populating the row of guesses
 choices.forEach((choice) => {
@@ -124,6 +137,8 @@ choices.forEach((choice) => {
         k--;
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
+        // lastRowOfGuesses.push(guessId); // remove
+        // console.log(lastRowOfGuesses + ' '+ rowID +' '+ k + '---------myguesses k>1<4'); // remove
       } else if (k == 1) {
         guessId = rowID * 4 - k;
         k = 4;
@@ -135,13 +150,14 @@ choices.forEach((choice) => {
           "guess__confirm--click"
         );
         confirmGuessesDom[rowID].classList.remove("guess__confirm--disabled");
-        console.log(confirmGuessesDom[rowID].classList);
+        // console.log(confirmGuessesDom[rowID].classList);
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        console.log(rowOfGuesses + "----guesses when 4");
+        // console.log(rowOfGuesses + "----guesses when 4");
         disableChoices(choices);
-        console.log(rowID + "--" + k + "---j and k before exiting");
-        return rowID, k;
+        // lastRowOfGuesses.push(guessId); // remove
+        // console.log(lastRowOfGuesses+ ' '+ rowID +' '+ k + '---------myguesses k==1'); // remove
+        return rowID, k, lastRowOfGuesses;
       } else {
         console.log("error");
         return;
