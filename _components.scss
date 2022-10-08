@@ -21,6 +21,7 @@
 }
 
 .game {
+    height: 100vh;
   h1,
   h2 {
     color: $color-darkbrown;
@@ -29,7 +30,6 @@
 
 @media screen and (max-width: 600px) {
     .game {
-        height: 100vw;
       h1 {
         font-size: 20px;
     }
@@ -39,7 +39,7 @@
 
 .game__code {
   background-color: $color-lightestbrown;
-  padding: 20px;
+  padding: 10px;
   align-items: center;
   justify-items: center;
   border-top-left-radius: 20px;
@@ -103,7 +103,7 @@
 
 .game__decoding__board {
   background-color: $color-lightbrown;
-  padding: 20px;
+  padding: 10px;
 
   .decoding__board__row {
     border-bottom: 1px solid $color-darkbrown;
@@ -236,7 +236,7 @@
 .game__color__choices {
   background-color: $color-lightestbrown;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 

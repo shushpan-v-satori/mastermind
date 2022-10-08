@@ -47,7 +47,7 @@ let rowID = 12;
 let guessId;
 let rowOfGuesses = [];
 let isAWinner = false;
-let lastRowOfGuesses = [];
+let eraseId;
 
 //run a codemaker on pageload
 gameCodeDom.addEventListener("load", codemaker(codemakerChoices));
@@ -65,9 +65,6 @@ const disableChoices = (choices) => {
       "lightblue--click",
       "yellow--click"
     );
-    eraseGuesses.disabled = true;
-    eraseGuesses.classList.remove("guess__erase--hover", "guess__erase--click");
-    console.log("disable choices");
   });
 };
 
@@ -99,65 +96,70 @@ const enableChoices = (choices) => {
         alert("error with page styling");
         return;
     }
-    eraseGuesses.disabled = false;
-    eraseGuesses.classList.add("guess__erase--hover", "guess__erase--click");
-    console.log("enable choices");
   });
 };
+
+//const disableErase button
+const disableEraseButton = () => {
+    console.log('enter disable erase');
+    eraseGuesses.disabled = true;
+    eraseGuesses.classList.remove("guess__erase--hover", "guess__erase--click");
+    console.log("disabled erase");
+}
+
+
+const enableEraseButton = () => {
+    console.log('enter enable erase');
+    eraseGuesses.disabled = false;
+    eraseGuesses.classList.add("guess__erase--hover", "guess__erase--click");
+    console.log("enabled erase");
+}
 
 //Erase last availble guess
 
 // eraseGuesses.addEventListener("click", (event) =>{
-//     event.preventDefault(); 
+//     event.preventDefault();
 // });
 
-// eraseGuesses.addEventListener("click", (event) => {
-//   event.preventDefault();
-//     let x = lastRowOfGuesses;
-//     erasableRowID = Math.round(x/4);
-//     k = 
-//     lastRowOfGuesses[eraseableId].classList.remove("blue",
-//     "green",
-//     "red",
-//     "pink",
-//     "lightblue",
-//     "yellow");
-// });
 
 // populating the row of guesses
 choices.forEach((choice) => {
   //on choice click the color is recognized, populates a row of guesses
   choice.addEventListener("click", (event) => {
     event.preventDefault();
+    console.log('entered guess processing')
+    enableEraseButton();
+    console.log(k + "---------K as requested by ");
     colorValue = choice.value;
     if (rowID > 0) {
       //populates guesses till the last row
       if (k > 1 && k <= 4) {
         guessId = rowID * 4 - k;
+        eraseId=k;
         k--;
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        // lastRowOfGuesses.push(guessId); // remove
-        // console.log(lastRowOfGuesses + ' '+ rowID +' '+ k + '---------myguesses k>1<4'); // remove
+        console.log(
+          guessId + " " + rowID + " " + k + ' '+ eraseId +"---------myguesses k>1<4"
+        ); 
       } else if (k == 1) {
+        eraseId=k;
         guessId = rowID * 4 - k;
-        k = 4;
-        rowID--; //becomes 0 for the first row, means that all rows are popualted with guesses
-        confirmGuessesDom[rowID].disabled = false;
-        confirmGuessesDom[rowID].classList.add(
+        confirmGuessesDom[rowID - 1].disabled = false;
+        confirmGuessesDom[rowID - 1].classList.add(
           "guess__confirm--enabled",
           "guess__confirm--hover",
           "guess__confirm--click"
         );
-        confirmGuessesDom[rowID].classList.remove("guess__confirm--disabled");
-        // console.log(confirmGuessesDom[rowID].classList);
+        confirmGuessesDom[rowID - 1].classList.remove(
+          "guess__confirm--disabled"
+        );
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        // console.log(rowOfGuesses + "----guesses when 4");
         disableChoices(choices);
-        // lastRowOfGuesses.push(guessId); // remove
-        // console.log(lastRowOfGuesses+ ' '+ rowID +' '+ k + '---------myguesses k==1'); // remove
-        return rowID, k, lastRowOfGuesses;
+        console.log(
+          guessId + " " + rowID + " " + k + ' '+ eraseId+ "---------myguesses k==1"
+        ); 
       } else {
         console.log("error");
         return;
@@ -166,12 +168,32 @@ choices.forEach((choice) => {
   });
 });
 
-//Click to confirm the guess
-
-confirmGuessesDom.forEach((confirmation) => {
-  //confirms a guess
-  confirmation.addEventListener("click", (event) => {
-    event.preventDefault();
+// erase guess
+eraseGuesses.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log('enter erase function');
+  console.log(k + " " + eraseId);
+  console.log(guesses[guessId]);
+  guesses[guessId].classList.remove(
+    "blue",
+    "green",
+    "red",
+    "pink",
+    "lightblue",
+    "yellow"
+  );
+  rowOfGuesses.pop();
+  console.log(rowOfGuesses);
+  k  = eraseId;
+  eraseId++;
+  guessId = rowID * 4 - eraseId;
+ if (eraseId>=5) {
+    disableEraseButton();
+ }
+ else enableEraseButton();
+  console.log(guessId + " " +k + " " + eraseId + "---from erase");
+  enableChoices(choices);
+  confirmGuessesDom.forEach((confirmation) => {
     confirmation.disabled = true;
     confirmation.classList.add("guess__confirm--disabled");
     confirmation.classList.remove(
@@ -179,7 +201,28 @@ confirmGuessesDom.forEach((confirmation) => {
       "guess__confirm--hover",
       "guess__confirm--click"
     );
-    if (rowID > 0) { //all rows but last
+  });
+//   return k, guessId;
+});
+
+//Click to confirm the guess
+
+confirmGuessesDom.forEach((confirmation) => {
+  //confirms a guess
+  confirmation.addEventListener("click", (event) => {
+    event.preventDefault();
+    k = 4;
+    rowID--; //becomes 0 for the first row, means that all rows are popualted with guesses
+    confirmation.disabled = true;
+    confirmation.classList.add("guess__confirm--disabled");
+    confirmation.classList.remove(
+      "guess__confirm--enabled",
+      "guess__confirm--hover",
+      "guess__confirm--click"
+    );
+    disableEraseButton();
+    if (rowID > 0) {
+      //all rows but last
       const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
       showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
       allPegsAreBlack(codePegsArrayValue); //check if won
@@ -203,12 +246,12 @@ confirmGuessesDom.forEach((confirmation) => {
       }
       enableChoices(choices);
       rowOfGuesses = [];
-    } 
-    else if (rowID==0) { //last row
-        const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
-        showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
-        allPegsAreBlack(codePegsArrayValue); //check if won
-        if (isAWinner == true) {
+    } else if (rowID == 0) {
+      //last row
+      const codePegsArrayValue = verifyGuess(rowOfGuesses, gameCode); //verify the results
+      showCodePegs(pegsDom, rowID, codePegsArrayValue); // display black and white pegs
+      allPegsAreBlack(codePegsArrayValue); //check if won
+      if (isAWinner == true) {
         // won
         showAnswers(rowOfGuesses);
         displayWinningMessage();
@@ -224,28 +267,27 @@ confirmGuessesDom.forEach((confirmation) => {
           event.preventDefault();
           hideWinningMessage();
         });
-    }
-        else {
-            showAnswers(rowOfGuesses);
-            displayLosingMessage();
-          //click on start a new game
-          const startGameButton = document.querySelector(".new__game");
-          startGameButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            codeReset();
-          });
-          //click on OK
-          const okButton = document.querySelector(".game__end__dismiss");
-          okButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            hideLosingMessage();
-          });
-          disableChoices(choices);
-        }
-    }
-    else { //lost
+      } else {
         showAnswers(rowOfGuesses);
         displayLosingMessage();
+        //click on start a new game
+        const startGameButton = document.querySelector(".new__game");
+        startGameButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          codeReset();
+        });
+        //click on OK
+        const okButton = document.querySelector(".game__end__dismiss");
+        okButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          hideLosingMessage();
+        });
+        disableChoices(choices);
+      }
+    } else {
+      //lost
+      showAnswers(rowOfGuesses);
+      displayLosingMessage();
       //click on start a new game
       const startGameButton = document.querySelector(".new__game");
       startGameButton.addEventListener("click", (event) => {
@@ -358,6 +400,8 @@ const codeReset = () => {
   rowID = 12;
   guessId = 0;
   rowOfGuesses = [];
+  isAWinner = false;
+  eraseId = 0;
   guesses.forEach((guess) => {
     guess.classList.remove(
       "blue",
@@ -396,4 +440,5 @@ const codeReset = () => {
   hideWinningMessage();
   codemaker(codemakerChoices);
   enableChoices(choices);
+  disableEraseButton();
 };
