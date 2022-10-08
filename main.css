@@ -23,28 +23,28 @@
   background-color: #ecb176;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .code__reset {
     padding: 5px;
     font-size: 14px;
   }
+}
+.game {
+  height: 100vh;
 }
 .game h1,
 .game h2 {
   color: #6f4e37;
 }
 
-@media screen and (max-width: 400px) {
-  .game {
-    height: 100vw;
-  }
+@media screen and (max-width: 600px) {
   .game h1 {
     font-size: 20px;
   }
 }
 .game__code {
   background-color: #ecb176;
-  padding: 20px;
+  padding: 10px;
   align-items: center;
   justify-items: center;
   border-top-left-radius: 20px;
@@ -63,7 +63,7 @@
   font-size: 18px;
   font-weight: bold;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__code .answer {
     width: 24px;
     height: 24px;
@@ -92,14 +92,14 @@
   background-color: #556b2f;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__code {
     padding: 5px;
   }
 }
 .game__decoding__board {
   background-color: #d99a6c;
-  padding: 20px;
+  padding: 10px;
 }
 .game__decoding__board .decoding__board__row {
   border-bottom: 1px solid #6f4e37;
@@ -157,7 +157,7 @@
   font-weight: bolder;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__decoding__board {
     padding: 10px;
   }
@@ -198,7 +198,7 @@
   background-color: #0c1618;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__peg__board {
     padding: 10px;
   }
@@ -210,7 +210,7 @@
 .game__color__choices {
   background-color: #ecb176;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -275,7 +275,7 @@
   background-color: #ecb176;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__color__choices {
     padding: 10px;
   }
@@ -326,7 +326,7 @@
   color: #d47479;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game__end__message {
     border: 3px solid #ecb176;
     padding: 20px 10px;
@@ -407,7 +407,7 @@
   grid-column: 1/3;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .game {
     margin: auto;
   }

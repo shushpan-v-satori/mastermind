@@ -21,7 +21,7 @@
 }
 
 .game {
-    height: 100vh;
+  height: 100vh;
   h1,
   h2 {
     color: $color-darkbrown;
@@ -29,13 +29,12 @@
 }
 
 @media screen and (max-width: 600px) {
-    .game {
-      h1 {
-        font-size: 20px;
-    }
+  .game {
+    h1 {
+      font-size: 20px;
     }
   }
-
+}
 
 .game__code {
   background-color: $color-lightestbrown;
@@ -190,9 +189,7 @@
       .guess__confirm--disabled {
         font-size: 10px;
       }
-
     }
-   
   }
 }
 

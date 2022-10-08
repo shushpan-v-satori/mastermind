@@ -3,32 +3,26 @@ import { codemaker, gameCode } from "./processor.js";
 
 //DOM elements
 const codemakerCodeDom = document.querySelectorAll(".answer");
-console.log(codemakerCodeDom);
 
 const codemakerQuestionmark = document.querySelectorAll(".answer__p");
-console.log(codemakerQuestionmark);
 
 const gameCodeDom = document.querySelector(".game__code");
-console.log(gameCodeDom);
 
 const resetButton = document.querySelector(".code__reset");
-console.log(resetButton);
 
 const choices = document.querySelectorAll(".choice"); //6 colors available for the user
-console.log(choices);
 
 const guesses = document.querySelectorAll(".guess"); //all rows of guesses
-console.log(guesses);
 
 const confirmGuessesDom = document.querySelectorAll(".guess__confirm"); //all confirmation buttons
-console.log(confirmGuessesDom);
 
 const eraseGuesses = document.querySelector(".guess__erase"); //erase button of a single quess
-console.log(eraseGuesses);
 
 const pegsDom = document.querySelectorAll(".peg");
 
 const gameEndMessageDom = document.querySelector(".game__end");
+
+//Constants
 
 const codemakerChoices = [
   "blue",
@@ -50,9 +44,11 @@ let isAWinner = false;
 let eraseId;
 
 //run a codemaker on pageload
+
 gameCodeDom.addEventListener("load", codemaker(codemakerChoices));
 
 // disable selection of choices for a guess (when guess row is full)
+
 const disableChoices = (choices) => {
   choices.forEach((choice) => {
     choice.disabled = true;
@@ -69,6 +65,7 @@ const disableChoices = (choices) => {
 };
 
 //enable selection of choices for a guess (when guess row is empty)
+
 const enableChoices = (choices) => {
   choices.forEach((choice) => {
     choice.disabled = false;
@@ -99,53 +96,40 @@ const enableChoices = (choices) => {
   });
 };
 
-//const disableErase button
-const disableEraseButton = () => {
-    console.log('enter disable erase');
-    eraseGuesses.disabled = true;
-    eraseGuesses.classList.remove("guess__erase--hover", "guess__erase--click");
-    console.log("disabled erase");
-}
+//disable Erase button
 
+const disableEraseButton = () => {
+  eraseGuesses.disabled = true;
+  eraseGuesses.classList.remove("guess__erase--hover", "guess__erase--click");
+};
+
+//enable Erase button
 
 const enableEraseButton = () => {
-    console.log('enter enable erase');
-    eraseGuesses.disabled = false;
-    eraseGuesses.classList.add("guess__erase--hover", "guess__erase--click");
-    console.log("enabled erase");
-}
-
-//Erase last availble guess
-
-// eraseGuesses.addEventListener("click", (event) =>{
-//     event.preventDefault();
-// });
-
+  eraseGuesses.disabled = false;
+  eraseGuesses.classList.add("guess__erase--hover", "guess__erase--click");
+};
 
 // populating the row of guesses
 choices.forEach((choice) => {
-  //on choice click the color is recognized, populates a row of guesses
   choice.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log('entered guess processing')
     enableEraseButton();
-    console.log(k + "---------K as requested by ");
     colorValue = choice.value;
     if (rowID > 0) {
       //populates guesses till the last row
       if (k > 1 && k <= 4) {
+        //all elements but last in a row
         guessId = rowID * 4 - k;
-        eraseId=k;
+        eraseId = k;
         k--;
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        console.log(
-          guessId + " " + rowID + " " + k + ' '+ eraseId +"---------myguesses k>1<4"
-        ); 
       } else if (k == 1) {
-        eraseId=k;
+        //last element in a row
+        eraseId = k;
         guessId = rowID * 4 - k;
-        confirmGuessesDom[rowID - 1].disabled = false;
+        confirmGuessesDom[rowID - 1].disabled = false; //enabling of the confirmation button
         confirmGuessesDom[rowID - 1].classList.add(
           "guess__confirm--enabled",
           "guess__confirm--hover",
@@ -156,25 +140,20 @@ choices.forEach((choice) => {
         );
         guesses[guessId].classList.add(colorValue);
         rowOfGuesses.push(colorValue);
-        disableChoices(choices);
-        console.log(
-          guessId + " " + rowID + " " + k + ' '+ eraseId+ "---------myguesses k==1"
-        ); 
+        disableChoices(choices); //disable selecting more colors
       } else {
-        console.log("error");
+        console.log("Application error"); //application shall not be entering this line, if it does then it is a defect
         return;
       }
     }
   });
 });
 
-// erase guess
+// Erase guess
 eraseGuesses.addEventListener("click", (event) => {
   event.preventDefault();
-  console.log('enter erase function');
-  console.log(k + " " + eraseId);
-  console.log(guesses[guessId]);
   guesses[guessId].classList.remove(
+    //clean color from DOM object
     "blue",
     "green",
     "red",
@@ -182,18 +161,17 @@ eraseGuesses.addEventListener("click", (event) => {
     "lightblue",
     "yellow"
   );
-  rowOfGuesses.pop();
-  console.log(rowOfGuesses);
-  k  = eraseId;
+  rowOfGuesses.pop(); //remove value from the array of answers
+  k = eraseId;
   eraseId++;
   guessId = rowID * 4 - eraseId;
- if (eraseId>=5) {
+  if (eraseId >= 5) {
+    //erase button is disabled when there are no guesses visible
     disableEraseButton();
- }
- else enableEraseButton();
-  console.log(guessId + " " +k + " " + eraseId + "---from erase");
-  enableChoices(choices);
+  } else enableEraseButton(); //erase button is enabled if there are visible guesses
+  enableChoices(choices); //choices shall be enabled back after a single erase
   confirmGuessesDom.forEach((confirmation) => {
+    //confirmation shall be disabled after a single erase
     confirmation.disabled = true;
     confirmation.classList.add("guess__confirm--disabled");
     confirmation.classList.remove(
@@ -202,17 +180,15 @@ eraseGuesses.addEventListener("click", (event) => {
       "guess__confirm--click"
     );
   });
-//   return k, guessId;
 });
 
-//Click to confirm the guess
+//click to confirm the guess
 
 confirmGuessesDom.forEach((confirmation) => {
-  //confirms a guess
   confirmation.addEventListener("click", (event) => {
     event.preventDefault();
     k = 4;
-    rowID--; //becomes 0 for the first row, means that all rows are popualted with guesses
+    rowID--; //becomes 0 for the top row, means that all rows are popualted with guesses
     confirmation.disabled = true;
     confirmation.classList.add("guess__confirm--disabled");
     confirmation.classList.remove(
@@ -230,21 +206,19 @@ confirmGuessesDom.forEach((confirmation) => {
         // won
         showAnswers(rowOfGuesses);
         displayWinningMessage();
-        //click on start a new game
-        const startGameButton = document.querySelector(".new__game");
+        const startGameButton = document.querySelector(".new__game"); //click on start a new game (game is reset)
         startGameButton.addEventListener("click", (event) => {
           event.preventDefault();
           codeReset();
         });
-        //click on OK
-        const okButton = document.querySelector(".game__end__dismiss");
+        const okButton = document.querySelector(".game__end__dismiss"); //click on OK (game screen remains as is)
         okButton.addEventListener("click", (event) => {
           event.preventDefault();
           hideWinningMessage();
         });
         return;
       }
-      enableChoices(choices);
+      enableChoices(choices); //continue with the next row of guesses
       rowOfGuesses = [];
     } else if (rowID == 0) {
       //last row
@@ -255,29 +229,26 @@ confirmGuessesDom.forEach((confirmation) => {
         // won
         showAnswers(rowOfGuesses);
         displayWinningMessage();
-        //click on start a new game
-        const startGameButton = document.querySelector(".new__game");
+        const startGameButton = document.querySelector(".new__game"); //click on start a new game
         startGameButton.addEventListener("click", (event) => {
           event.preventDefault();
           codeReset();
         });
-        //click on OK
-        const okButton = document.querySelector(".game__end__dismiss");
+        const okButton = document.querySelector(".game__end__dismiss"); //click on OK
         okButton.addEventListener("click", (event) => {
           event.preventDefault();
           hideWinningMessage();
         });
       } else {
+        //lost
         showAnswers(rowOfGuesses);
         displayLosingMessage();
-        //click on start a new game
-        const startGameButton = document.querySelector(".new__game");
+        const startGameButton = document.querySelector(".new__game"); //click on start a new game
         startGameButton.addEventListener("click", (event) => {
           event.preventDefault();
           codeReset();
         });
-        //click on OK
-        const okButton = document.querySelector(".game__end__dismiss");
+        const okButton = document.querySelector(".game__end__dismiss"); //click on OK
         okButton.addEventListener("click", (event) => {
           event.preventDefault();
           hideLosingMessage();
@@ -285,22 +256,7 @@ confirmGuessesDom.forEach((confirmation) => {
         disableChoices(choices);
       }
     } else {
-      //lost
-      showAnswers(rowOfGuesses);
-      displayLosingMessage();
-      //click on start a new game
-      const startGameButton = document.querySelector(".new__game");
-      startGameButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        codeReset();
-      });
-      //click on OK
-      const okButton = document.querySelector(".game__end__dismiss");
-      okButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        hideLosingMessage();
-      });
-      disableChoices(choices);
+      console.log("Application error"); //application shall not be entering this line, if it does then it is a defect);
     }
   });
 });

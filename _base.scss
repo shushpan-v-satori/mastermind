@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Raleway&display=swap");
 
 $font-logo: "Quicksand", sans-serif;
 $font-main: "Raleway", sans-serif;
@@ -26,11 +26,10 @@ $color-red-active: #ac0968;
 $color-green: #556b2f;
 $color-green-active: #718e3e;
 
-* { 
-    padding: 0px;
-    margin: 0px;
-    font-family: $font-main;
-    box-sizing: border-box;
-    color: $color-darkbrown
-    }
-
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: $font-main;
+  box-sizing: border-box;
+  color: $color-darkbrown;
+}
