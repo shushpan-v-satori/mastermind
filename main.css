@@ -200,7 +200,7 @@
 
 @media screen and (max-width: 600px) {
   .game__peg__board {
-    padding: 5px;
+    padding: 10px;
   }
   .game__peg__board .code__pegs {
     width: 24px;
