@@ -221,11 +221,15 @@
 
 @media screen and (max-width: 600px) {
   .game__peg__board {
-    padding: 10px;
+    padding: 5px;
 
     .code__pegs {
       width: 24px;
       height: 24px;
+
+      .peg {
+        margin: 1px;
+      }
     }
   }
 }
