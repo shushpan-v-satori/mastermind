@@ -1,6 +1,7 @@
 # Matermind game
 
 https://shushpan-v-satori.github.io/mastermind/
+
 Offline Mastermind is a two-person code breaker game where one person creates a code and the second person tries to break it.
 In this version of the game, the computer will be creating the code and the player will be trying to break it.
 
